@@ -1,5 +1,5 @@
 <script>
-import ProfileCardVue from './components/ProfileCard.vue'
+import ProfileCardVue from './components/ProfileCard/ProfileCard.vue'
   export default{
     data(){
 
