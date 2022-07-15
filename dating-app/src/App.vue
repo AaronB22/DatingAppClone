@@ -1,7 +1,11 @@
 <script>
+import ProfileCardVue from './components/ProfileCard.vue'
   export default{
     data(){
 
+    },
+    components:{
+      ProfileCardVue
     }
   }
 
@@ -9,7 +13,7 @@
 </script>
 
 <template>
-  <h2>test</h2>
+  <ProfileCardVue/>
 </template>
 
 
