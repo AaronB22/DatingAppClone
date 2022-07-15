@@ -3,7 +3,9 @@ import TagItemVue from '../Tags/TagItem.vue'
 
     export default{
         data(){
-
+            return{
+                location:'Seattle'
+            }
         },
         components:{
             TagItemVue
@@ -26,7 +28,10 @@ import TagItemVue from '../Tags/TagItem.vue'
                 <div class="col tagCol"><TagItemVue/></div>
                 <div class="col tagCol"><TagItemVue/></div>
             </div>
-
+            <div>
+                <h3>My Location</h3>
+                {{location}}
+            </div>
         </div>
     </div>
 </template>
