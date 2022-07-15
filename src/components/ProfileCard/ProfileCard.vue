@@ -1,5 +1,5 @@
 <script>
-import TagItemVue from '../Tags/TagItem.vue'
+import TagItemVue from '../Tags/TagItem.vue';
 
     export default{
         data(){
@@ -8,12 +8,18 @@ import TagItemVue from '../Tags/TagItem.vue'
             }
         },
         components:{
-            TagItemVue
+            TagItemVue,
+            
         }
     }
 </script>
 
 <template>
+    <div class="swipeButtons">
+        <button class="dislikeBtn swipeBtn"><fa icon="x"/></button>
+        <span class="swipBtnSpacer"></span>
+        <Button class="heartBtn swipeBtn"><fa icon="heart"/> </Button>
+    </div>
     <div class="card profileCard centerMargin">
         <div class="card-body">
             <div class="profileImgDiv centerMargin"></div>
@@ -32,6 +38,7 @@ import TagItemVue from '../Tags/TagItem.vue'
                 <h3>My Location</h3>
                 {{location}}
             </div>
+            <div class="bottomSpacer"></div>
         </div>
     </div>
 </template>
