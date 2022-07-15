@@ -7,10 +7,28 @@
 </script>
 
 <template>
-    <div class="card" style="width: 18rem;">
+    <div class="card profileCard centerMargin">
         <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+            <div class="profileImgDiv centerMargin"></div>
+
+        </div>
+    </div>
 </template>
+
+<style>
+    .profileCard{
+        width: 100vw;
+        margin-top: 5vh;
+    }
+    .centerMargin{
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .profileImgDiv{
+        background-color: aliceblue;
+        width: 90vw;
+        aspect-ratio: 3/4;
+    }
+   
+</style>
