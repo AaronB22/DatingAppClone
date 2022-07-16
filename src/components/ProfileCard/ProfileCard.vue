@@ -79,6 +79,10 @@ import TagItemVue from '../Tags/TagItem.vue';
 </script>
 
 <template>
+    <div class="settingBtnDiv">
+        <button class="settingBtn settingBtn"><fa icon="gears" size='2xl'/> </button>
+        <button class="settingBtn filterBtn"><fa icon="bars" size='2xl'/> </button>
+    </div>
     <div class="swipeButtons">
         <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
         <span class="swipBtnSpacer"></span>
