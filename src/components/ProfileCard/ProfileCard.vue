@@ -32,7 +32,8 @@ import TagItemVue from '../Tags/TagItem.vue';
                 const userData= data.results[0];
                 this.person.profileImg=userData.picture.large;
                 this.person.location=userData.location.city;
-                this.person.name=userData.name.first +' '+userData.name.last
+                this.person.name=userData.name.first +' '+userData.name.last;
+                this.generateNewInterest()
             },
             likeUser(){
                 if(!localStorage.like){
@@ -53,19 +54,28 @@ import TagItemVue from '../Tags/TagItem.vue';
                 }
             },
             generateNewInterest(){
-                for(let i=0; i<5;i++){
-                    const rng=Math.round(Math.random()*this.interesList.length)
-                    console.log(this.interesList[rng])
-                    const newInter={id:id++, text:this.interesList[rng]}
-                    this.interests.push(newInter)
-
+                this.interests=[];
+                while(this.interests.length<5){
+                    const rng=Math.floor(Math.random()*this.interesList.length)
+                    let isDub=false;
+                    this.interests.forEach(inters=>{
+                        if(this.interesList[rng]===inters.text){
+                            console.log(inters.text)
+                            console.log(this.interesList[rng])
+                            console.log('dub')
+                            isDub=true
+                        }
+                    })
+                    if(!isDub){
+                        const newInter={id:id++, text:this.interesList[rng]}
+                        this.interests.push(newInter)
+                    }
                 }
             }
             
         },
         mounted (){
-            this.getUser(),
-            this.generateNewInterest()
+            this.getUser()
         }
     }
 </script>
@@ -94,10 +104,6 @@ import TagItemVue from '../Tags/TagItem.vue';
                 <div class="col tagCol" v-for="interest in interests" :key="interest.id">
                     <TagItemVue :inter="interest.text" :key="interest.id"/>
                 </div>
-                    <!-- <div class="col tagCol"><TagItemVue interests='hello'/></div>
-                    <div class="col tagCol"><TagItemVue interests='hello'/></div>
-                    <div class="col tagCol"><TagItemVue interests='hello'/></div>
-                    <div class="col tagCol"><TagItemVue interests='hello'/></div> -->
             </div>
             <div class="location">
                 <h3>My Location</h3>
