@@ -4,8 +4,13 @@ import TagItemVue from '../Tags/TagItem.vue';
     export default{
         data(){
             return{
-                profileImg:"",
-                location:''
+                person:{
+                    name:"",
+                    profileImg:"",
+                    location:"",
+                    gender:"",
+                    age:"",
+                }
             }
         },
         components:{
@@ -18,13 +23,11 @@ import TagItemVue from '../Tags/TagItem.vue';
                 const data= await res.json();
                 const userData= data.results[0];
                 console.log(userData)
-                this.location=userData.location.city
-                this.profileImg= userData.picture.large
+                this.person.profileImg=userData.picture.large;
+                this.person.location=userData.location.city;
+                this.person.name=userData.name.first +' '+userData.name.last
             },
             
-        },
-        watch:{
-
         },
         mounted (){
             this.getUser()
@@ -40,8 +43,9 @@ import TagItemVue from '../Tags/TagItem.vue';
     </div>
     <div class="card profileCard centerMargin">
         <div class="card-body">
+            <div class="card-title">{{person.name}}</div>
             <div class="profileImgDiv centerMargin">
-                <img :src='profileImg' class='profileImg' >
+                <img :src='person.profileImg' class='profileImg' >
             </div>
             <div>
                 <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsum, voluptatem nemo veniam fuga, maiores dignissimos provident necessitatibus voluptatibus enim blanditiis dolorum sapiente pariatur amet ab sed inventore doloremque ratione.</p>
@@ -56,7 +60,7 @@ import TagItemVue from '../Tags/TagItem.vue';
             </div>
             <div class="location">
                 <h3>My Location</h3>
-                {{location}}
+                {{person.location}}
             </div>
             <div class="bottomSpacer"></div>
         </div>
