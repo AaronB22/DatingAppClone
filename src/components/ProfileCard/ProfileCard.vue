@@ -22,11 +22,28 @@ import TagItemVue from '../Tags/TagItem.vue';
                 const res=await fetch('https://randomuser.me/api/');
                 const data= await res.json();
                 const userData= data.results[0];
-                console.log(userData)
                 this.person.profileImg=userData.picture.large;
                 this.person.location=userData.location.city;
                 this.person.name=userData.name.first +' '+userData.name.last
             },
+            likeUser(){
+                if(!localStorage.like){
+                    const newLike=JSON.stringify([this.person])
+                    localStorage.like=newLike
+                    this.getUser()
+                }
+                if(localStorage.like){
+                    const oldLike=JSON.parse(localStorage.like)
+                    const newPerson= JSON.stringify(this.person)
+                    const fixedPerson= JSON.parse(newPerson)
+                    const newArr=[fixedPerson]
+                    oldLike.forEach(like => {
+                        newArr.push(like)
+                    });
+                    localStorage.like=JSON.stringify(newArr)
+                    this.getUser()
+                }
+            }
             
         },
         mounted (){
@@ -39,7 +56,7 @@ import TagItemVue from '../Tags/TagItem.vue';
     <div class="swipeButtons">
         <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
         <span class="swipBtnSpacer"></span>
-        <Button class="heartBtn swipeBtn" @click="this.getUser"><fa icon="heart"/> </Button>
+        <Button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </Button>
     </div>
     <div class="card profileCard centerMargin">
         <div class="card-body">
