@@ -30,9 +30,12 @@ import TagItemVue from '../Tags/TagItem.vue';
                 const res=await fetch('https://randomuser.me/api/');
                 const data= await res.json();
                 const userData= data.results[0];
+                console.log(userData)
                 this.person.profileImg=userData.picture.large;
                 this.person.location=userData.location.city;
                 this.person.name=userData.name.first +' '+userData.name.last;
+                this.person.gender=userData.gender;
+                this.person.age=userData.dob.age;
                 this.generateNewInterest()
             },
             likeUser(){
@@ -59,12 +62,7 @@ import TagItemVue from '../Tags/TagItem.vue';
                     const rng=Math.floor(Math.random()*this.interesList.length)
                     let isDub=false;
                     this.interests.forEach(inters=>{
-                        if(this.interesList[rng]===inters.text){
-                            console.log(inters.text)
-                            console.log(this.interesList[rng])
-                            console.log('dub')
-                            isDub=true
-                        }
+                        if(this.interesList[rng]===inters.text)isDub=true
                     })
                     if(!isDub){
                         const newInter={id:id++, text:this.interesList[rng]}
@@ -88,21 +86,24 @@ import TagItemVue from '../Tags/TagItem.vue';
     </div>
     <div class="card profileCard centerMargin">
         <div class="card-body">
-            <div class="card-title">{{person.name}}</div>
+            <div class="card-title">{{person.name}}, {{person.age}}</div>
             <div class="profileImgDiv centerMargin">
                 <img :src='person.profileImg' class='profileImg' >
             </div>
             <div>
                 <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsum, voluptatem nemo veniam fuga, maiores dignissimos provident necessitatibus voluptatibus enim blanditiis dolorum sapiente pariatur amet ab sed inventore doloremque ratione.</p>
             </div>
-            <div>
+            <div class="row tagRow">
                 <h3>My Basics</h3>
+                <div class="col tagCol">
+                    <TagItemVue :tagText="person.gender"/>
+                </div>
                 
             </div>
             <div class="row tagRow">
                 <h3>My Interest</h3>
                 <div class="col tagCol" v-for="interest in interests" :key="interest.id">
-                    <TagItemVue :inter="interest.text" :key="interest.id"/>
+                    <TagItemVue :tagText="interest.text" :key="interest.id"/>
                 </div>
             </div>
             <div class="location">

@@ -1,13 +1,13 @@
 <script>
     export default{
         props: [
-            'inter'
+            'tagText'
         ]
     }
 </script>
 
 <template>
-    <div class="tagBody">{{inter}}</div>
+    <div class="tagBody">{{tagText}}</div>
 </template>
 
 <style>@import 'TagItem.scss';</style>
