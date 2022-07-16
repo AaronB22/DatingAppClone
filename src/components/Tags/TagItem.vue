@@ -1,13 +1,13 @@
 <script>
     export default{
-        data(){
-
-        }
+        props: [
+            'inter'
+        ]
     }
 </script>
 
 <template>
-    <div class="tagBody">Hike</div>
+    <div class="tagBody">{{inter}}</div>
 </template>
 
 <style>@import 'TagItem.scss';</style>

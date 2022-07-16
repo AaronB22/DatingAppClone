@@ -1,6 +1,6 @@
 <script>
 import TagItemVue from '../Tags/TagItem.vue';
-
+    let id=0
     export default{
         data(){
             return{
@@ -10,12 +10,20 @@ import TagItemVue from '../Tags/TagItem.vue';
                     location:"",
                     gender:"",
                     age:"",
-                }
+                },
+                interesList:[
+                    'Hiking',
+                    'Skiing',
+                    'Motorcycling',
+                    'Coding',
+                    'Beach',
+                    'Moutains'
+                ],
+                interests:[]
             }
         },
         components:{
-            TagItemVue,
-            
+            TagItemVue
         },
         methods:{
            async getUser(){
@@ -43,11 +51,21 @@ import TagItemVue from '../Tags/TagItem.vue';
                     localStorage.like=JSON.stringify(newArr)
                     this.getUser()
                 }
+            },
+            generateNewInterest(){
+                for(let i=0; i<5;i++){
+                    const rng=Math.round(Math.random()*this.interesList.length)
+                    console.log(this.interesList[rng])
+                    const newInter={id:id++, text:this.interesList[rng]}
+                    this.interests.push(newInter)
+
+                }
             }
             
         },
         mounted (){
-            this.getUser()
+            this.getUser(),
+            this.generateNewInterest()
         }
     }
 </script>
@@ -66,14 +84,20 @@ import TagItemVue from '../Tags/TagItem.vue';
             </div>
             <div>
                 <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsum, voluptatem nemo veniam fuga, maiores dignissimos provident necessitatibus voluptatibus enim blanditiis dolorum sapiente pariatur amet ab sed inventore doloremque ratione.</p>
-                <h3>My Interest</h3>
+            </div>
+            <div>
+                <h3>My Basics</h3>
+                
             </div>
             <div class="row tagRow">
-                <div class="col tagCol"><TagItemVue/></div>
-                <div class="col tagCol"><TagItemVue/></div>
-                <div class="col tagCol"><TagItemVue/></div>
-                <div class="col tagCol"><TagItemVue/></div>
-                <div class="col tagCol"><TagItemVue/></div>
+                <h3>My Interest</h3>
+                <div class="col tagCol" v-for="interest in interests" :key="interest.id">
+                    <TagItemVue :inter="interest.text" :key="interest.id"/>
+                </div>
+                    <!-- <div class="col tagCol"><TagItemVue interests='hello'/></div>
+                    <div class="col tagCol"><TagItemVue interests='hello'/></div>
+                    <div class="col tagCol"><TagItemVue interests='hello'/></div>
+                    <div class="col tagCol"><TagItemVue interests='hello'/></div> -->
             </div>
             <div class="location">
                 <h3>My Location</h3>
