@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import ProfileCard from '../components/ProfileCard/ProfileCard.vue'
-import FilterBar from '../components/FilterBar/FilterBar.vue'
+import ProfileCard from '../views/ProfileCard/ProfileCard.vue'
+import FilterBar from '../views/FilterBar/FilterBar.vue'
 
 const routes=[
     {

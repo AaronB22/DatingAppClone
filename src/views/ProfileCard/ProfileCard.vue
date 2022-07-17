@@ -1,6 +1,6 @@
 <script>
 import router from '@/router';
-import TagItemVue from '../Tags/TagItem.vue';
+import TagItemVue from '../../components/Tags/TagItem.vue';
     let id=0
     export default{
         data(){
