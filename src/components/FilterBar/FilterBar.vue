@@ -24,6 +24,8 @@
 </script>
 <template>
     <div class="card filterCard">
+        <router-link to="/"><fa icon="x"></fa></router-link>
+        <h1>Date Filters</h1>
         <div class="card-body">
             <p>Who you want to date</p>
             <div class="card">
@@ -60,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            <button>Apply</button>
         </div>
     </div>
 </template>

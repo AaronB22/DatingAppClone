@@ -1,6 +1,6 @@
 <script>
+import router from '@/router';
 import TagItemVue from '../Tags/TagItem.vue';
-import FilterBarVue from '../FilterBar/FilterBar.vue'
     let id=0
     export default{
         data(){
@@ -25,14 +25,13 @@ import FilterBarVue from '../FilterBar/FilterBar.vue'
         },
         components:{
             TagItemVue,
-            FilterBarVue
+            
         },
         methods:{
            async getUser(){
                 const res=await fetch('https://randomuser.me/api/');
                 const data= await res.json();
                 const userData= data.results[0];
-                console.log(userData)
                 this.person.profileImg=userData.picture.large;
                 this.person.location=userData.location.city;
                 this.person.name=userData.name.first +' '+userData.name.last;
@@ -71,6 +70,10 @@ import FilterBarVue from '../FilterBar/FilterBar.vue'
                         this.interests.push(newInter)
                     }
                 }
+            },
+            handleFilterClick(){
+                // window.location.assign('/filter')
+                router.go('/filter')
             }
             
         },
@@ -83,15 +86,19 @@ import FilterBarVue from '../FilterBar/FilterBar.vue'
 <template>
     <div class="settingBtnDiv">
         <button class="settingBtn settingBtn"><fa icon="gears" size='2xl'/> </button>
-        <button class="settingBtn filterBtn"><fa icon="bars" size='2xl'/> </button>
+        
+        <router-link to="/filter">
+            <button class="settingBtn filterBtn"><fa icon="bars" size='2xl'/> </button>
+
+        </router-link>
     </div>
     <div class="swipeButtons">
         <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
         <span class="swipBtnSpacer"></span>
-        <Button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </Button>
+        <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </button>
     </div>
     <div class="card profileCard centerMargin">
-        <FilterBarVue/>
+        
         <div class="card-body">
             <div class="card-title">{{person.name}}, {{person.age}}</div>
             <div class="profileImgDiv centerMargin">
