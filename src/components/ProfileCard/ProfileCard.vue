@@ -1,5 +1,6 @@
 <script>
 import TagItemVue from '../Tags/TagItem.vue';
+import FilterBarVue from '../FilterBar/FilterBar.vue'
     let id=0
     export default{
         data(){
@@ -23,7 +24,8 @@ import TagItemVue from '../Tags/TagItem.vue';
             }
         },
         components:{
-            TagItemVue
+            TagItemVue,
+            FilterBarVue
         },
         methods:{
            async getUser(){
@@ -89,6 +91,7 @@ import TagItemVue from '../Tags/TagItem.vue';
         <Button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </Button>
     </div>
     <div class="card profileCard centerMargin">
+        <FilterBarVue/>
         <div class="card-body">
             <div class="card-title">{{person.name}}, {{person.age}}</div>
             <div class="profileImgDiv centerMargin">
