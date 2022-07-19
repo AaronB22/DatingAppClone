@@ -1,6 +1,8 @@
 <script>
-import router from '@/router';
-import TagItemVue from '../../components/Tags/TagItem.vue';
+    import router from '@/router';
+    import TagItemVue from '../../components/Tags/TagItem.vue';
+    import {useFilterStore} from '@/stores/filter'
+ 
     let id=0
     export default{
         data(){
@@ -28,16 +30,27 @@ import TagItemVue from '../../components/Tags/TagItem.vue';
             
         },
         methods:{
+            filterUser(person){
+                const filterStore=useFilterStore()
+                console.log(person.dob.age)
+                console.log(`Min Age: ${filterStore.minAge}; Max Age: ${filterStore.maxAge}`)
+                if(person.dob.age >=filterStore.minAge && person.dob.age<=filterStore.maxAge){
+                    this.person.profileImg=person.picture.large;
+                    this.person.location=person.location.city;
+                    this.person.name=person.name.first +' '+person.name.last;
+                    this.person.gender=person.gender;
+                    this.person.age=person.dob.age;
+                    this.generateNewInterest()
+                }
+                else{
+                    this.getUser()
+                }
+            },
            async getUser(){
                 const res=await fetch('https://randomuser.me/api/');
                 const data= await res.json();
                 const userData= data.results[0];
-                this.person.profileImg=userData.picture.large;
-                this.person.location=userData.location.city;
-                this.person.name=userData.name.first +' '+userData.name.last;
-                this.person.gender=userData.gender;
-                this.person.age=userData.dob.age;
-                this.generateNewInterest()
+                this.filterUser(userData)
             },
             likeUser(){
                 if(!localStorage.like){
@@ -72,13 +85,14 @@ import TagItemVue from '../../components/Tags/TagItem.vue';
                 }
             },
             handleFilterClick(){
-                // window.location.assign('/filter')
                 router.go('/filter')
-            }
+            },
+            
             
         },
         mounted (){
             this.getUser()
+            // this.filterUser()
         }
     }
 </script>

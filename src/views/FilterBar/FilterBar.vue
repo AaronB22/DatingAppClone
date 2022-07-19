@@ -1,4 +1,5 @@
 <script>
+    import { useFilterStore } from '@/stores/filter';
     export default{
         data(){
             return{
@@ -9,8 +10,10 @@
         },  
         methods:{
             handleRangeChange(){
+               
                 if(this.minValue<18){
                     this.minValue=18
+                    
                 }
                 if(this.minValue>this.maxValue){
                     this.minValue= this.maxValue
@@ -18,13 +21,28 @@
                 if(this.maxValue>100){
                     this.maxValue=100
                 }
+            },
+            applyFilter(){
+                const filterStore= useFilterStore()
+                filterStore.minAge=this.minValue;
+                filterStore.maxAge=this.maxValue;
+                // filterStore.gender=
+                console.log(filterStore.minAge)
+            },
+            setFilters(){
+                const filterStore= useFilterStore()
+                this.minValue= filterStore.minAge;
+                this.maxValue= filterStore.maxAge
             }
+        },
+        mounted(){
+            this.setFilters()
         }
     }
 </script>
 <template>
     <div class="card filterCard">
-        <router-link to="/"><fa icon="x"></fa></router-link>
+        <router-link to="/"><fa icon="x"  size="2xl"></fa></router-link>
         <h1>Date Filters</h1>
         <div class="card-body">
             <p>Who you want to date</p>
@@ -62,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <button>Apply</button>
+            <button @click="applyFilter()">Apply</button>
         </div>
     </div>
 </template>

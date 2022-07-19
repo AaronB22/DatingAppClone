@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createRouter, createWebHashHistory } from "vue-router";
 import ProfileCard from '../views/ProfileCard/ProfileCard.vue'
 import FilterBar from '../views/FilterBar/FilterBar.vue'
@@ -16,7 +17,7 @@ const routes=[
 ]
 
 const router= createRouter({
-    history: createWebHashHistory(),
+    history: createWebHashHistory('http://localhost:8080'),
     routes
 })
 

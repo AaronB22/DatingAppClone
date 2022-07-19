@@ -1,12 +1,8 @@
-<script>
-  export default{
-    
-  }
-
-
+<script setup>
 </script>
-
+   
 <template>
+
   <RouterView/>
   
 </template>
