@@ -10,12 +10,12 @@
                     <fa icon="gear" size='2xl'/>
                 </button>
             </router-link>
-            <router-link to="/profile">
+            <router-link to="/">
                 <button class="">
                     <fa icon="clone" size='2xl'/>
                 </button>
             </router-link>
-            <router-link to="/profile">
+            <router-link to="/likes">
                 <button class="">
                     <fa icon="heart" size='2xl'/>
                 </button>

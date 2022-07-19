@@ -126,7 +126,6 @@
         },
         mounted (){
             this.getUser()
-            // this.filterUser()
         }
     }
 </script>
