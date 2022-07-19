@@ -16,10 +16,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(fas)
 
-// createApp(App)
-
-// const pinia= createPinia()
-
 app.component('fa', FontAwesomeIcon)
 import router from './router'
 app.use(router)

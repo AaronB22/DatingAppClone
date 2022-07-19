@@ -1,5 +1,4 @@
 <script>
-    import router from '@/router';
     import TagItemVue from '../../components/Tags/TagItem.vue';
     import {useFilterStore} from '@/stores/filter'
  
@@ -122,9 +121,6 @@
                     }
                 }
             },
-            handleFilterClick(){
-                router.go('/filter')
-            },
             
             
         },
@@ -137,7 +133,6 @@
 
 <template>
     <div class="settingBtnDiv">
-        <button class="settingBtn settingBtn"><fa icon="gears" size='2xl'/> </button>
         
         <router-link to="/filter">
             <button class="settingBtn filterBtn"><fa icon="bars" size='2xl'/> </button>

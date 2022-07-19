@@ -1,10 +1,16 @@
-<script setup>
+<script>
+  import FooterComp from './components/Footer/FooterComp.vue'
+  export default{
+    components:{
+      FooterComp
+    }
+  }
 </script>
    
 <template>
 
   <RouterView/>
-  
+  <FooterComp/>
 </template>
 
 

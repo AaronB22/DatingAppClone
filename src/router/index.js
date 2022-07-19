@@ -2,12 +2,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import ProfileCard from '../views/ProfileCard/ProfileCard.vue'
 import FilterBar from '../views/FilterBar/FilterBar.vue'
+import ProfileSetup from '../views/ProfileSetup/ProfileSetup.vue'
 
 const routes=[
     {
         path:'/filter',
         name:'filterVar',
         component: FilterBar
+    },
+    {
+        path:'/profile',
+        name:'ProfileSetup',
+        component: ProfileSetup
     },
     {
         path:'/',
@@ -17,7 +23,7 @@ const routes=[
 ]
 
 const router= createRouter({
-    history: createWebHashHistory('http://localhost:8080'),
+    history: createWebHashHistory(),
     routes
 })
 
