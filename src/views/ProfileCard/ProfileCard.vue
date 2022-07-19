@@ -14,6 +14,7 @@
                     gender:"",
                     age:"",
                 },
+                genderFilter:'both',
                 interesList:[
                     'Hiking',
                     'Skiing',
@@ -32,20 +33,57 @@
         methods:{
             filterUser(person){
                 const filterStore=useFilterStore()
-                console.log(person.dob.age)
-                console.log(`Min Age: ${filterStore.minAge}; Max Age: ${filterStore.maxAge}`)
+                if(filterStore.male){
+                    this.gender='male'
+                }
+                if(filterStore.female){
+                    this.gender='female'
+                }
+                if(filterStore.female && filterStore.male){
+                    this.gender='both'
+                }
                 if(person.dob.age >=filterStore.minAge && person.dob.age<=filterStore.maxAge){
-                    this.person.profileImg=person.picture.large;
-                    this.person.location=person.location.city;
-                    this.person.name=person.name.first +' '+person.name.last;
-                    this.person.gender=person.gender;
-                    this.person.age=person.dob.age;
-                    this.generateNewInterest()
+
+                    switch(this.gender){
+                        case 'male':
+                            if(person.gender==='male'){
+                                this.setUser(person)
+                            }
+                            else{
+                                this.getUser()
+                            }
+                            break;
+                        case 'female':
+                            if(person.gender==='female'){
+                                this.setUser(person)
+                            }
+                            else{
+                                this.getUser()
+                            }
+                            break;
+                        case 'both':
+                            this.setUser(person)
+                    }
+                    
                 }
                 else{
                     this.getUser()
                 }
             },
+            setUser(person){
+                    if(person.gender==='male'){
+                        this.person.gender= "Man"
+                    }
+                    if(person.gender==='female'){
+                        this.person.gender='Woman'
+                    }
+                    this.person.profileImg=person.picture.large;
+                    this.person.location=person.location.city;
+                    this.person.name=person.name.first +' '+person.name.last;
+                    this.person.age=person.dob.age;
+                    this.generateNewInterest()
+            },
+
            async getUser(){
                 const res=await fetch('https://randomuser.me/api/');
                 const data= await res.json();

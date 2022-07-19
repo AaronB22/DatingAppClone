@@ -4,8 +4,10 @@
         data(){
             return{
                maxValue:100,
-               minValue:18
-
+                minValue:18,
+                isMaleClick:true,
+                isFemaleClick:true,
+                isBothClick:true
             }
         },  
         methods:{
@@ -26,13 +28,49 @@
                 const filterStore= useFilterStore()
                 filterStore.minAge=this.minValue;
                 filterStore.maxAge=this.maxValue;
-                // filterStore.gender=
+                filterStore.male= this.isMaleClick;
+                filterStore.female= this.isFemaleClick
                 console.log(filterStore.minAge)
+            },
+            handleGender(e){
+                console.log(e.target.id)
+                switch (e.target.id) {
+                    case 'male':
+                        
+                        this.isMaleClick=e.target.checked
+                        console.log(this.isMaleClick)
+                        this.checkIfBothClick()
+                        break;
+                    case 'female':
+                        this.isFemaleClick=e.target.checked
+                        this.checkIfBothClick()
+                        break;
+                    case 'all-genders':
+                       this.isMaleClick=e.target.checked
+                       this.isFemaleClick=e.target.checked
+                       this.isBothClick=e.target.checked
+                }
+            },
+            checkIfBothClick(){
+                if(this.isFemaleClick && this.isMaleClick){
+                    this.isBothClick= true
+                }
+                else{
+                    this.isBothClick= false
+                }
             },
             setFilters(){
                 const filterStore= useFilterStore()
                 this.minValue= filterStore.minAge;
                 this.maxValue= filterStore.maxAge
+                this.isMaleClick= filterStore.male;
+                this.isFemaleClick= filterStore.female;
+                if(this.isFemaleClick && this.isMaleClick){
+                    this.isBothClick=true
+                }
+                else{
+                    this.isBothClick=false
+                }
             }
         },
         mounted(){
@@ -48,9 +86,23 @@
             <p>Who you want to date</p>
             <div class="card">
                 <div class="card-body">
-                    <div>Men <input type="checkbox"></div>
-                    <div>Women <input type="checkbox"></div>
-                    <div>All people <input type="checkbox"></div>
+
+                    <div>
+                        <div v-if="isMaleClick" >Men<input type="checkbox" id='male' @change="handleGender" checked></div>
+                        <div v-else>Men<input type="checkbox" id='male' @change="handleGender"></div>
+
+                    </div>
+                    <div>
+                        <div v-if="isFemaleClick" >Women<input type="checkbox" id='female' @change="handleGender" checked></div>
+                        <div v-else>Women<input type="checkbox" id='female' @change="handleGender"></div>
+
+                    </div>
+                     <div>
+                        <div v-if="isBothClick" >All Genders<input type="checkbox" id='all-genders' @change="handleGender" checked></div>
+                        <div v-else>All Genders<input type="checkbox" id='all-genders' @change="handleGender"></div>
+
+                    </div>
+
                 </div>
             </div>
              <p>Select Age Range</p>
