@@ -1,5 +1,6 @@
 <script>
 import {useFilterStore} from '@/stores/filter'
+import {useCurrentProfileStore} from '@/stores/currentProfile'
 let id=0
     export default{
          data(){
@@ -113,6 +114,7 @@ let id=0
                 }
             },
             generateNewInterest(){
+                const currentProfileStore= useCurrentProfileStore()
                 this.interests=[];
                 while(this.interests.length<5){
                     const rng=Math.floor(Math.random()*this.interesList.length)
@@ -125,6 +127,9 @@ let id=0
                         this.interests.push(newInter)
                     }
                 }
+                    currentProfileStore.person=this.person
+                    currentProfileStore.person.interests= this.interests;
+                    console.log(currentProfileStore.person)
             },
             dislikeUser(){
                 this.swipe='disLikeSwipe';
@@ -136,7 +141,7 @@ let id=0
         },
         mounted (){
         this.getUser()
-        }
+        },
     }
 
 </script>
