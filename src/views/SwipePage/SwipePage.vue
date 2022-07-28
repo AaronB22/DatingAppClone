@@ -12,6 +12,7 @@ let id=0
                     age:"",
                     interests:[]
                 },
+                swipe:'false',
                 genderFilter:'both',
                 interesList:[
                     'Hiking',
@@ -89,7 +90,11 @@ let id=0
                 if(!localStorage.like){
                     const newLike=JSON.stringify([this.person])
                     localStorage.like=newLike
-                    this.getUser()
+                    this.swipe='likeSwipe'
+                    setTimeout(()=>{
+                        this.swipe=false
+                        this.getUser()
+                     }, '500')
                 }
                 if(localStorage.like){
                     const oldLike=JSON.parse(localStorage.like)
@@ -100,7 +105,11 @@ let id=0
                         newArr.push(like)
                     });
                     localStorage.like=JSON.stringify(newArr)
-                    this.getUser()
+                        this.swipe='likeSwipe'
+                        setTimeout(()=>{
+                            this.swipe=false
+                            this.getUser()
+                         }, '500')
                 }
             },
             generateNewInterest(){
@@ -117,6 +126,13 @@ let id=0
                     }
                 }
             },
+            dislikeUser(){
+                this.swipe='disLikeSwipe';
+                setTimeout(()=>{
+                        this.swipe=false
+                         this.getUser()
+                     }, '500')
+            }
         },
         mounted (){
         this.getUser()
@@ -126,20 +142,23 @@ let id=0
 </script>
 
 <template>
-    <div class="card card-body swipeCard">
-        <div class="upgrade">
-            
-        </div>
-        <div class="profileImgDiv">
-            <div class="darken"></div>
-            <img :src='person.profileImg' class='profileImg' >
-            <div class="imgHeader">{{person.name}}, {{person.age}}</div>
-        </div>
-     <div class="swipeButtons">
-                <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x" size='2xl'/></button>
-                 <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIcon" size='2xl'/> </button>
-                <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
+    <div class="swipeParent">
+        <div class="card card-body swipeCard" :class="swipe">
+            <div class="upgrade">
+                
             </div>
+            <div class="profileImgDiv">
+                <div class="darken"></div>
+                <img :src='person.profileImg' class='profileImg' >
+                <div class="imgHeader">{{person.name}}, {{person.age}}</div>
+            </div>
+         <div class="swipeButtons">
+                    <button class="dislikeBtn swipeBtn" @click="this.dislikeUser"><fa icon="x" size='2xl'/></button>
+                     <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIcon" size='2xl'/> </button>
+                    <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
+                </div>
+        </div>
+
     </div>
 </template>
 

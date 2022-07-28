@@ -1,5 +1,6 @@
 .swipeCard{
     height: 100vh;
+    width: 100vw;
 }
 
 
@@ -69,4 +70,45 @@
 
 .heartBtn:hover{
     background-color: #B93160;
+}
+.swipeParent{
+    height: 100vh;
+    width: 100vw;
+    background-color: #66BFBF;
+}
+
+.likeSwipe{
+    animation: swipeRight .5s ease-in forwards;
+}
+.disLikeSwipe{
+    animation: swipeLeft .5s ease-in forwards;
+}
+@keyframes swipeRight{
+    0%{
+        transform: translateX(0);
+    }
+    33%{
+        transform: rotate(10deg);
+    }
+    70%{
+        transform: rotate(40deg);
+    }
+    100%{
+        transform: translate(100%);
+    }
+}
+
+@keyframes swipeLeft{
+    0%{
+        transform: translateX(0);
+    }
+    33%{
+        transform: rotate(350deg);
+    }
+    70%{
+        transform: rotate(300deg);
+    }
+    100%{
+        transform: translate(-100%);
+    }
 }
