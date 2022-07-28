@@ -162,8 +162,8 @@ let id=0
                 </router-link>
             </div>
             <div class="swipeButtons">
-                    <button class="dislikeBtn swipeBtn" @click="this.dislikeUser"><fa icon="x" size='2xl'/></button>
-                     <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIcon" size='2xl'/> </button>
+                    <button class="dislikeBtn swipeBtn" @click="this.dislikeUser"><fa icon="x"  class="XIcon" size='2xl'/></button>
+                     <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIconBolt" size='2xl'/> </button>
                     <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
             </div>
         </div>

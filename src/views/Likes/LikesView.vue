@@ -29,7 +29,6 @@
 <template>
     <div class="likeHeader">
         <h1>Your Likes</h1>
-        <button @click="this.returnToMainPage()"> Return</button>
     </div>
     <div v-for="like in likes" :key="like.name">
         <LikeCards :likeObj="JSON.stringify(like)"  :key="like.name"/>

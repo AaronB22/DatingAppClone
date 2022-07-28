@@ -1,7 +1,17 @@
 .filterCard{
     width: 90vw;
+    height: 80vh;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #F6FBF4;
 }
-
+.dateFilterHeader{
+    text-align: center;
+}
+.subFilterHeader{
+    text-align: center;
+    font-size: 1.2rem;
+}
 
 .ageInput{
     width: 20vw;
@@ -13,4 +23,40 @@
 .ageMax{
     width: 20vw;
     margin-right: 20px;
+}
+
+.returnX{
+    color:red !important;
+}
+
+.filterReturnLink{
+    width: 20vw;
+    position: absolute;
+    top:0
+}
+
+.genderLine{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    opacity: 20%;
+}
+.filterInput{
+    position: relative;
+    right: 100;
+    background-color: aqua;
+    
+}
+
+.applyBtn{
+   margin-left: auto;
+   margin-right: auto;
+   width: 50vw;
+   border: none;
+   margin-top: 5vh;
+   margin-bottom: 5vh;
+   background-color: #CA4E79;
+   font-size: 2rem;
+   font-weight: 600;
+   border-radius: 10px;
 }

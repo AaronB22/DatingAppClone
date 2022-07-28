@@ -29,10 +29,10 @@
 </script>
 <template>
     <div class="card">
-        <div class="card-body center">
+        <div class="card-body">
             {{person.name}}
-        <div>
-            <img :src="person.profileImg">
+        <div class="lcImgDiv">
+            <img :src="person.profileImg" class="lcImg">
 
         </div>
         <div>

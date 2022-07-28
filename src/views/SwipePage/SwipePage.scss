@@ -77,12 +77,21 @@
     width: 100vw;
     background-color: #66BFBF;
 }
-
 .likeSwipe{
     animation: swipeRight .5s ease-in forwards;
 }
 .disLikeSwipe{
     animation: swipeLeft .5s ease-in forwards;
+}
+
+.XIcon{
+    color: #B93160 !important;
+}
+.heartIconBolt{
+    color: #0096FF !important;
+}
+.heartIcon{
+    color: #CA4E79 !important;
 }
 @keyframes swipeRight{
     0%{

@@ -32,7 +32,6 @@
                 filterStore.female= this.isFemaleClick
             },
             handleGender(e){
-                console.log(e.target.id)
                 switch (e.target.id) {
                     case 'male':
                         
@@ -79,32 +78,33 @@
 </script>
 <template>
     <div class="card filterCard">
-        <router-link to="/"><fa icon="x"  size="2xl"></fa></router-link>
-        <h1>Date Filters</h1>
+        <h1 class="dateFilterHeader">Date Filters</h1>
         <div class="card-body">
-            <p>Who you want to date</p>
+            <p class="subFilterHeader">Who you want to date</p>
             <div class="card">
                 <div class="card-body">
 
                     <div>
-                        <div v-if="isMaleClick" >Men<input type="checkbox" id='male' @change="handleGender" checked></div>
-                        <div v-else>Men<input type="checkbox" id='male' @change="handleGender"></div>
+                        <div v-if="isMaleClick" >Men<input type="checkbox" id='male' @change="handleGender" checked class="filterInput"></div>
+                        <div v-else>Men<input type="checkbox" id='male' @change="handleGender" class="filterInput"></div>
 
                     </div>
+                    <div class="genderLine"></div>
                     <div>
-                        <div v-if="isFemaleClick" >Women<input type="checkbox" id='female' @change="handleGender" checked></div>
-                        <div v-else>Women<input type="checkbox" id='female' @change="handleGender"></div>
+                        <div v-if="isFemaleClick" >Women<input type="checkbox" id='female' @change="handleGender" checked class="filterInput"></div>
+                        <div v-else>Women<input type="checkbox" id='female' @change="handleGender" class="filterInput"></div>
 
                     </div>
+                    <div class="genderLine"></div>
                      <div>
-                        <div v-if="isBothClick" >All Genders<input type="checkbox" id='all-genders' @change="handleGender" checked></div>
-                        <div v-else>All Genders<input type="checkbox" id='all-genders' @change="handleGender"></div>
+                        <div v-if="isBothClick" >All Genders<input type="checkbox" id='all-genders' @change="handleGender" checked class="filterInput"></div>
+                        <div v-else>All Genders<input type="checkbox" id='all-genders' @change="handleGender" class="filterInput"></div>
 
                     </div>
-
+                     <div class="genderLine"></div>
                 </div>
             </div>
-             <p>Select Age Range</p>
+             <p class="subFilterHeader">Select Age Range</p>
             <div class="card">
                 <div class="card-body row">
                     <div class='col ageCol'>
@@ -131,8 +131,8 @@
                     </div>
                 </div>
             </div>
-            <button @click="applyFilter()">Apply</button>
         </div>
+            <button @click="applyFilter()" class="applyBtn">Apply</button>
     </div>
 </template>
 <style>
