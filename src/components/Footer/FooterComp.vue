@@ -20,9 +20,15 @@
                     <fa icon="heart" size='2xl'/>
                 </button>
             </router-link>
+             <router-link to="/likes">
+                <button class="">
+                    <fa icon="bars" size='2xl'/>
+                </button>
+            </router-link>
+           
                 
         </div>
     </div>
 </template>
 
-<style>@import 'FooterComp.scss'</style>
+<style>@import 'FooterComp.scss'; </style>

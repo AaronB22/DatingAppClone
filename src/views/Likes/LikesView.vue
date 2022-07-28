@@ -15,6 +15,9 @@
                     console.log(JSON.parse(localStorage.like))
                     this.likes=JSON.parse(localStorage.like)
                 }
+            },
+            returnToMainPage(){
+                window.location.assign('/')
             }
         },
         mounted(){
@@ -24,8 +27,15 @@
 </script>
 
 <template>
-    <h1>Your Likes</h1>
+    <div class="likeHeader">
+        <h1>Your Likes</h1>
+        <button @click="this.returnToMainPage()"> Return</button>
+    </div>
     <div v-for="like in likes" :key="like.name">
         <LikeCards :likeObj="JSON.stringify(like)"  :key="like.name"/>
     </div>
 </template>
+
+<style>
+    @import 'LikesView.scss'
+</style>

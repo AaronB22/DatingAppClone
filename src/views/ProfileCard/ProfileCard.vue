@@ -131,26 +131,15 @@
 </script>
 
 <template>
-    <div class="settingBtnDiv">
-        
-        <router-link to="/filter">
-            <button class="settingBtn filterBtn"><fa icon="bars" size='2xl'/> </button>
-
-        </router-link>
-    </div>
-    <div class="swipeButtons">
-        <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
-        <span class="swipBtnSpacer"></span>
-        <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </button>
-    </div>
     <div class="card profileCard centerMargin">
         
         <div class="card-body">
-            <div class="card-title">{{person.name}}, {{person.age}}</div>
+            <div class="card-title nameHeader">{{person.name}}, {{person.age}}</div>
             <div class="profileImgDiv centerMargin">
                 <img :src='person.profileImg' class='profileImg' >
             </div>
             <div>
+                <h3>My Bio</h3>
                 <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsum, voluptatem nemo veniam fuga, maiores dignissimos provident necessitatibus voluptatibus enim blanditiis dolorum sapiente pariatur amet ab sed inventore doloremque ratione.</p>
             </div>
             <div class="row tagRow">
@@ -167,10 +156,17 @@
                 </div>
             </div>
             <div class="location">
-                <h3>My Location</h3>
-                {{person.location}}
+                <h3 >My Location</h3>
+                <span class="locationTxt">
+                    {{person.location}}
+
+                </span>
             </div>
-            <div class="bottomSpacer"></div>
+            <div class="swipeButtons">
+                <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
+                <span class="swipBtnSpacer"></span>
+                <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </button>
+            </div>
         </div>
     </div>
 </template>

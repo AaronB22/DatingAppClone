@@ -30,7 +30,7 @@
                 filterStore.maxAge=this.maxValue;
                 filterStore.male= this.isMaleClick;
                 filterStore.female= this.isFemaleClick
-                console.log(filterStore.minAge)
+                window.location.assign('/')
             },
             handleGender(e){
                 console.log(e.target.id)
