@@ -88,6 +88,7 @@ let id=0
                 this.filterUser(userData)
             },
             likeUser(){
+                document.documentElement.style.overflow='hidden'
                 if(!localStorage.like){
                     const newLike=JSON.stringify([this.person])
                     localStorage.like=newLike
@@ -95,6 +96,7 @@ let id=0
                     setTimeout(()=>{
                         this.swipe=false
                         this.getUser()
+                        document.documentElement.style.overflow='auto'
                      }, '500')
                 }
                 if(localStorage.like){
@@ -110,6 +112,7 @@ let id=0
                         setTimeout(()=>{
                             this.swipe=false
                             this.getUser()
+                            document.documentElement.style.overflow='auto'
                          }, '500')
                 }
             },
@@ -133,9 +136,11 @@ let id=0
             },
             dislikeUser(){
                 this.swipe='disLikeSwipe';
+                document.documentElement.style.overflow='hidden'
                 setTimeout(()=>{
                         this.swipe=false
                          this.getUser()
+                         document.documentElement.style.overflow='auto'
                      }, '500')
             },
 
