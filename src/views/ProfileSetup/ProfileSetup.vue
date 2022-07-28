@@ -130,17 +130,17 @@
                 <h2 class="text-center">Bio</h2>
                 <textarea class="bioSetup" @change="addBio">{{user.bio}}</textarea>
             </div>
-              <div>
+            <div class="setUpInputDiv">
                 <h3>Name</h3>
-                <input @change="addName" v-model="user.name">
+                <input @change="addName" v-model="user.name" class="setUpInput">
             </div>
-             <div>
+             <div class="setUpInputDiv">
                 <h3>Age</h3>
-                <input @change="addAge" type="number" v-model="user.age" >
+                <input @change="addAge" type="number" v-model="user.age" class="setUpInput">
             </div>
-            <div>
+            <div class="setUpInputDiv">
                 <h3>Location</h3>
-                <input @change="addLocation" v-model="user.location">
+                <input @change="addLocation" v-model="user.location" class="setUpInput">
             </div>
         </div>
         <button class="saveBtn center" @click="saveChanges">Save Changes</button>

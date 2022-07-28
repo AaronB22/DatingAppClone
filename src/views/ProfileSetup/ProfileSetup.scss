@@ -38,7 +38,7 @@
 .saveBtn{
     border: 1vw solid #B93160;
     margin-top: 2vh;
-    margin-bottom: 3vh;
+    margin-bottom: 25vh;
     background-color: #FFF89C;
     font-family: 'Ubuntu';
     font-size: 1.5rem;
@@ -48,4 +48,18 @@
 .saveBtn:hover{
     background-color: #B93160;
     color: #FFF89C;
+}
+
+
+.setUpInput{
+    border: none;
+    background-color: whitesmoke;
+}
+
+.setUpInputDiv{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1vh;
+    text-align: center;
+    width: 50vw;
 }
