@@ -72,6 +72,7 @@
                     this.user.gender='Non-Binary'
                 }
                 localStorage.user=JSON.stringify(this.user);
+                 window.location.assign('/')
             },
             setProfile(){
                 if(localStorage.user){
