@@ -99,7 +99,7 @@
 </script>
 
 <template>
-    <div class="card">
+    <div class="card setupCard">
         <div class="card-body">
             <div class="mainImgDiv center">
                 <div v-if="hasImg">
@@ -111,19 +111,23 @@
                 </div>
         
             </div>
-            <div class="card card-body">
-                <div>
-                    Women <input v-if="isWomen" type="checkbox" id="woman" checked @change="selectGender"><input v-else type="checkbox" id="woman" @change="selectGender">
-                </div>
-                 <div>
-                    Man <input v-if="isMan" type="checkbox" id="man" checked @change="selectGender"><input v-else type="checkbox" id="man" @change="selectGender">
-                </div>
-                <div>
-                    Non Binary <input v-if="isNb" type="checkbox" id="nb" checked @change="selectGender"><input v-else type="checkbox" id="nb" @change="selectGender">
+            <h2 class="text-center">Select Gender</h2>
+            <div class="card gender-select center">
+                <div class="card-body">
+                    <div >
+                        Women <input v-if="isWomen" type="checkbox" id="woman" checked @change="selectGender"><input v-else type="checkbox" id="woman" @change="selectGender">
+                    </div>
+                     <div>
+                        Man <input v-if="isMan" type="checkbox" id="man" checked @change="selectGender"><input v-else type="checkbox" id="man" @change="selectGender">
+                    </div>
+                    <div>
+                        Non Binary <input v-if="isNb" type="checkbox" id="nb" checked @change="selectGender"><input v-else type="checkbox" id="nb" @change="selectGender">
+                    </div>
+
                 </div>
             </div>
-            <div>
-                <h2>Bio</h2>
+            <div class="center">
+                <h2 class="text-center">Bio</h2>
                 <textarea class="bio" @change="addBio">{{user.bio}}</textarea>
             </div>
               <div>
@@ -138,8 +142,8 @@
                 <h3>Location</h3>
                 <input @change="addLocation" v-model="user.location">
             </div>
-            <button @click="saveChanges">Save Changes</button>
         </div>
+        <button class="saveBtn center" @click="saveChanges">Save Changes</button>
     </div>
 </template>
 

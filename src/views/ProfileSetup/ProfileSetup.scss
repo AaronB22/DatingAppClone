@@ -1,16 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 .mainImgDiv{
     width: 80vw;
 }
 .mainImg{
     width: 80vw;
+    border-radius: 10%;
 
 }
 .center{
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Ubuntu';
+}
+.text-center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.gender-select{
+    font-family: 'Ubuntu';
+    margin-top: 2vh;
+    width: 80vw;
+    border: 1vw solid #B93160;
+    background-color: whitesmoke;
 }
 
 .bio{
+    border: 1vw solid #B93160;
     width: 80vw;
     height: 20vh;
+    font-family: 'Ubuntu';
+    background-color: whitesmoke;
+}
+
+.saveBtn{
+    border: 1vw solid #B93160;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    background-color: #FFF89C;
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    border-radius: 20px;
+}
+
+.saveBtn:hover{
+    background-color: #B93160;
+    color: #FFF89C;
 }
