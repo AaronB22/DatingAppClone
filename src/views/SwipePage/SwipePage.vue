@@ -137,7 +137,8 @@ let id=0
                         this.swipe=false
                          this.getUser()
                      }, '500')
-            }
+            },
+
         },
         mounted (){
         this.getUser()
@@ -153,15 +154,18 @@ let id=0
                 
             </div>
             <div class="profileImgDiv">
-                <div class="darken"></div>
-                <img :src='person.profileImg' class='profileImg' >
-                <div class="imgHeader">{{person.name}}, {{person.age}}</div>
+                <router-link to="/moreInfo">
+                    <div class="darken"></div>
+                    <img :src='person.profileImg' class='profileImg' >
+                    <div class="imgHeader">{{person.name}}, {{person.age}}</div>
+
+                </router-link>
             </div>
-         <div class="swipeButtons">
+            <div class="swipeButtons">
                     <button class="dislikeBtn swipeBtn" @click="this.dislikeUser"><fa icon="x" size='2xl'/></button>
                      <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIcon" size='2xl'/> </button>
                     <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
-                </div>
+            </div>
         </div>
 
     </div>

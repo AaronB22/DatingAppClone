@@ -16,7 +16,10 @@
     font-size: 2rem;
 }
 
-
+.profileImgMoreInfo{
+    width: 80vw;
+    border-radius: 10%;
+}
 
 .bio{
     height: 30vh;
@@ -44,4 +47,19 @@
 .locationTxt{
     font-family: "Merriweather";
 
+}
+.swipeBtnMI{
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #F6C6EA;
+    border: none;
+}
+
+.swipeButtons2{
+    width: 90vw;
+    margin-top: 30px;
+    margin-bottom: 30vh;
 }

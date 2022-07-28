@@ -23,7 +23,7 @@ const routes=[
         component: ProfileSetup
     },
     {
-        path:'/p',
+        path:'/moreInfo',
         name:'profileCard',
         component: ProfileCard
     },

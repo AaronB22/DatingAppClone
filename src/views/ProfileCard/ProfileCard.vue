@@ -1,8 +1,7 @@
 <script>
     import TagItemVue from '../../components/Tags/TagItem.vue';
-    import {useFilterStore} from '@/stores/filter'
+    import {useCurrentProfileStore} from '@/stores/currentProfile'
  
-    let id=0
     export default{
         data(){
             return{
@@ -13,15 +12,6 @@
                     gender:"",
                     age:"",
                 },
-                genderFilter:'both',
-                interesList:[
-                    'Hiking',
-                    'Skiing',
-                    'Motorcycling',
-                    'Coding',
-                    'Beach',
-                    'Moutains'
-                ],
                 interests:[]
             }
         },
@@ -30,70 +20,16 @@
             
         },
         methods:{
-            filterUser(person){
-                const filterStore=useFilterStore()
-                if(filterStore.male){
-                    this.gender='male'
-                }
-                if(filterStore.female){
-                    this.gender='female'
-                }
-                if(filterStore.female && filterStore.male){
-                    this.gender='both'
-                }
-                if(person.dob.age >=filterStore.minAge && person.dob.age<=filterStore.maxAge){
-
-                    switch(this.gender){
-                        case 'male':
-                            if(person.gender==='male'){
-                                this.setUser(person)
-                            }
-                            else{
-                                this.getUser()
-                            }
-                            break;
-                        case 'female':
-                            if(person.gender==='female'){
-                                this.setUser(person)
-                            }
-                            else{
-                                this.getUser()
-                            }
-                            break;
-                        case 'both':
-                            this.setUser(person)
-                    }
-                    
-                }
-                else{
-                    this.getUser()
-                }
-            },
-            setUser(person){
-                    if(person.gender==='male'){
-                        this.person.gender= "Man"
-                    }
-                    if(person.gender==='female'){
-                        this.person.gender='Woman'
-                    }
-                    this.person.profileImg=person.picture.large;
-                    this.person.location=person.location.city;
-                    this.person.name=person.name.first +' '+person.name.last;
-                    this.person.age=person.dob.age;
-                    this.generateNewInterest()
-            },
-
-           async getUser(){
-                const res=await fetch('https://randomuser.me/api/');
-                const data= await res.json();
-                const userData= data.results[0];
-                this.filterUser(userData)
+            setUser(){
+                const currentProfile= useCurrentProfileStore();
+                console.log(currentProfile)
+                this.person= currentProfile.person
+                this.interests= currentProfile.person.interests
             },
             likeUser(){
                 if(!localStorage.like){
                     const newLike=JSON.stringify([this.person])
                     localStorage.like=newLike
-                    this.getUser()
                 }
                 if(localStorage.like){
                     const oldLike=JSON.parse(localStorage.like)
@@ -104,26 +40,14 @@
                         newArr.push(like)
                     });
                     localStorage.like=JSON.stringify(newArr)
-                    this.getUser()
                 }
-            },
-            generateNewInterest(){
-                this.interests=[];
-                while(this.interests.length<5){
-                    const rng=Math.floor(Math.random()*this.interesList.length)
-                    let isDub=false;
-                    this.interests.forEach(inters=>{
-                        if(this.interesList[rng]===inters.text)isDub=true
-                    })
-                    if(!isDub){
-                        const newInter={id:id++, text:this.interesList[rng]}
-                        this.interests.push(newInter)
-                    }
-                }
-            },
+            }
             
             
         },
+         mounted(){
+            this.setUser()
+        }
     }
 </script>
 
@@ -133,7 +57,7 @@
         <div class="card-body">
             <div class="card-title nameHeader">{{person.name}}, {{person.age}}</div>
             <div class="profileImgDiv centerMargin">
-                <img :src='person.profileImg' class='profileImg' >
+                <img :src='person.profileImg' class='profileImgMoreInfo' >
             </div>
             <div>
                 <h3>My Bio</h3>
@@ -158,11 +82,13 @@
                     {{person.location}}
 
                 </span>
+              <div class="swipeButtons2">
+                  <router-link to="/">
+                        <button class="dislikeBtn swipeBtnMI" @click="this.dislikeUser"><fa icon="x" size='2xl'/></button>
+                        <button class="heartBtnBolt swipeBtnMI" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" size='2xl'/> </button>
+                        <button class="heartBtn swipeBtnMI" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
+                    </router-link>
             </div>
-            <div class="swipeButtons">
-                <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x" size='2xl'/></button>
-                <span class="swipBtnSpacer"></span>
-                <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
             </div>
         </div>
     </div>
