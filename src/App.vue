@@ -10,10 +10,17 @@
 <template>
 
   <RouterView/>
-  <FooterComp/>
+  <div class="bottomFooter">
+    <FooterComp/>
+
+  </div>
 </template>
 
 
 <style>
- 
+  .bottomFooter{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+  }
 </style>

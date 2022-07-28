@@ -4,6 +4,7 @@ import ProfileCard from '../views/ProfileCard/ProfileCard.vue'
 import FilterBar from '../views/FilterBar/FilterBar.vue'
 import ProfileSetup from '../views/ProfileSetup/ProfileSetup.vue'
 import LikesView from '../views/Likes/LikesView.vue'
+import SwipePage from '../views/SwipePage/SwipePage.vue'
 
 const routes=[
     {
@@ -22,9 +23,14 @@ const routes=[
         component: ProfileSetup
     },
     {
-        path:'/',
+        path:'/p',
         name:'profileCard',
         component: ProfileCard
+    },
+    {
+        path:'/',
+        name:'swipePage',
+        component: SwipePage
     },
 ]
 

@@ -1,0 +1,72 @@
+.swipeCard{
+    height: 100vh;
+}
+
+
+.darken{
+    position: absolute;
+    width: 95vw;
+    height: 11vh;
+    backdrop-filter: blur(15px);
+    top:51.1vh;
+    border-radius: 10%;
+
+}
+.profileImgDiv{
+    width: 80vw;
+
+}
+.profileImg{
+    width: 95vw;
+    height: 60vh;
+    border-radius: 10%;
+}
+.imgHeader{
+    position: absolute;
+    text-align: center;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 80vw;
+    top:390px;
+    font-size: 2rem;
+    color: white;
+    z-index: 3;
+}
+
+.swipeButtons{
+    width: 80vw;
+    height: 15vh;
+    z-index: 12;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+   justify-content: space-between;
+   margin-top: 8vh;
+   border-radius: 20px;
+}
+.swipeBtn{
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #F6C6EA;
+    border: none;
+}
+.heartBtnBolt{
+    margin-left: 8vw;
+    margin-right: 8vw;
+}
+.heartBtnBolt:hover{
+    background-color: #66BFBF;
+}
+
+.dislikeBtn:hover{
+    background-color: #513252;
+}
+
+.heartBtn:hover{
+    background-color: #B93160;
+}

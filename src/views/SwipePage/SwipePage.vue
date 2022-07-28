@@ -1,10 +1,8 @@
 <script>
-    import TagItemVue from '../../components/Tags/TagItem.vue';
-    import {useFilterStore} from '@/stores/filter'
- 
-    let id=0
+import {useFilterStore} from '@/stores/filter'
+let id=0
     export default{
-        data(){
+         data(){
             return{
                 person:{
                     name:"",
@@ -12,6 +10,7 @@
                     location:"",
                     gender:"",
                     age:"",
+                    interests:[]
                 },
                 genderFilter:'both',
                 interesList:[
@@ -24,10 +23,6 @@
                 ],
                 interests:[]
             }
-        },
-        components:{
-            TagItemVue,
-            
         },
         methods:{
             filterUser(person){
@@ -46,6 +41,7 @@
                     switch(this.gender){
                         case 'male':
                             if(person.gender==='male'){
+                                console.log('male')
                                 this.setUser(person)
                             }
                             else{
@@ -121,53 +117,32 @@
                     }
                 }
             },
-            
-            
         },
+        mounted (){
+        this.getUser()
+        }
     }
+
 </script>
 
 <template>
-    <div class="card profileCard centerMargin">
-        
-        <div class="card-body">
-            <div class="card-title nameHeader">{{person.name}}, {{person.age}}</div>
-            <div class="profileImgDiv centerMargin">
-                <img :src='person.profileImg' class='profileImg' >
-            </div>
-            <div>
-                <h3>My Bio</h3>
-                <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsum, voluptatem nemo veniam fuga, maiores dignissimos provident necessitatibus voluptatibus enim blanditiis dolorum sapiente pariatur amet ab sed inventore doloremque ratione.</p>
-            </div>
-            <div class="row tagRow">
-                <h3>My Basics</h3>
-                <div class="col tagCol">
-                    <TagItemVue :tagText="person.gender"/>
-                </div>
-                
-            </div>
-            <div class="row tagRow">
-                <h3>My Interest</h3>
-                <div class="col tagCol" v-for="interest in interests" :key="interest.id">
-                    <TagItemVue :tagText="interest.text" :key="interest.id"/>
-                </div>
-            </div>
-            <div class="location">
-                <h3 >My Location</h3>
-                <span class="locationTxt">
-                    {{person.location}}
-
-                </span>
-            </div>
-            <div class="swipeButtons">
+    <div class="card card-body swipeCard">
+        <div class="upgrade">
+            
+        </div>
+        <div class="profileImgDiv">
+            <div class="darken"></div>
+            <img :src='person.profileImg' class='profileImg' >
+            <div class="imgHeader">{{person.name}}, {{person.age}}</div>
+        </div>
+     <div class="swipeButtons">
                 <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x" size='2xl'/></button>
-                <span class="swipBtnSpacer"></span>
+                 <button class="heartBtnBolt swipeBtn" @click="this.likeUser"><fa icon="fa-heart-circle-bolt" class="heartIcon" size='2xl'/> </button>
                 <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
             </div>
-        </div>
     </div>
 </template>
 
 <style>
-   @import './ProfileCard.scss';
+    @import 'SwipePage.scss';
 </style>

@@ -16,14 +16,7 @@
     font-size: 2rem;
 }
 
-.profileImgDiv{
-    width: 80vw;
 
-}
-.profileImg{
-    width: 80vw;
-    border-radius: 10%;
-}
 
 .bio{
     height: 30vh;
@@ -41,31 +34,7 @@
     width: 25vw;
 }
 
-.swipeButtons{
-    z-index: 12;
-    margin-right: auto;
-    margin-left: auto;
-   
-}
-.swipBtnSpacer{
-    margin: 22vw;
-}
 
-.swipeBtn{
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    background-color: #F6C6EA;
-    border: none;
-}
-
-.dislikeBtn:hover{
-    background-color: #B93160;
-}
-
-.heartBtn:hover{
-    background-color: #FFF89C;
-}
 
 
 .location{
