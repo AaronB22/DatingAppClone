@@ -128,7 +128,7 @@
             </div>
             <div class="center">
                 <h2 class="text-center">Bio</h2>
-                <textarea class="bio" @change="addBio">{{user.bio}}</textarea>
+                <textarea class="bioSetup" @change="addBio">{{user.bio}}</textarea>
             </div>
               <div>
                 <h3>Name</h3>

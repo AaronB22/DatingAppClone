@@ -1,4 +1,21 @@
 .footer{
-    position: absolute;
+    margin-top: 1vh;
+    position: fixed;
     bottom: 0;
+    background-color: #4C3A51!important;
+}
+.footerBtns {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footBtn{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 10px;
+    background-color: #4C3A51;
+    border: none;
+}
+.footBtn:hover{
+    background-color: #B93160;
 }

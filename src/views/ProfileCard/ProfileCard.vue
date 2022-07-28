@@ -163,9 +163,9 @@
                 </span>
             </div>
             <div class="swipeButtons">
-                <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x"/></button>
+                <button class="dislikeBtn swipeBtn" @click="this.getUser"><fa icon="x" size='2xl'/></button>
                 <span class="swipBtnSpacer"></span>
-                <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="heart"/> </button>
+                <button class="heartBtn swipeBtn" @click="this.likeUser"><fa icon="fa-heart" class="heartIcon" size='2xl'/> </button>
             </div>
         </div>
     </div>

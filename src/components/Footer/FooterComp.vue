@@ -4,24 +4,24 @@
 </script>
 <template>
     <div class="card footer">
-        <div class="'card-body'">
+        <div class="footerBtns card-body">
             <router-link to="/profile">
-                <button class="">
+                <button class="footBtn">
                     <fa icon="gear" size='2xl'/>
                 </button>
             </router-link>
             <router-link to="/">
-                <button class="">
+                <button class="footBtn">
                     <fa icon="clone" size='2xl'/>
                 </button>
             </router-link>
             <router-link to="/likes">
-                <button class="">
+                <button class="footBtn">
                     <fa icon="heart" size='2xl'/>
                 </button>
             </router-link>
-             <router-link to="/likes">
-                <button class="">
+             <router-link to="/filter">
+                <button class="footBtn">
                     <fa icon="bars" size='2xl'/>
                 </button>
             </router-link>
