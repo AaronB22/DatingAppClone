@@ -17,7 +17,7 @@ async function createWindow() {
 
     //frame:false,
 
-    icon:__dirname +'/assets/diamond.png',
+    icon:__dirname +'/assets/icons/win/icon.ico',
     maxHeight:844,
     maxWidth:400,
     minHeight:844,
