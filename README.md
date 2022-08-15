@@ -16,12 +16,14 @@ Technology Used:
 How To Use App:
 	
 For Dev Server:
+
     1.Clone Repo.
     2. Once Clone Open Repo in Terminal.
     3. Run npm i;
     4. Once Complete, run npm start.
 		
 For Release:
+
     1.Clone Repo.
     2.Once Clone Open Repo in Terminal.
     3.Run npm electron:build.
